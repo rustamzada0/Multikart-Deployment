@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Products</title>
+</head>
+<body>
+    <h2>Our New Products</h2>
+    <p>Check out our latest products:</p>
+    
+    {% for item in items %}
+        <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+            <img src="{{item.image.url}}" alt="{{ item.variant.title }}" style="max-width: 100%;">
+            <h3>{{ item.variant.title }}</h3>
+            <p>Description: {{ item.variant.product.desc }}</p>
+            <p>Price: ${{ item.variant.actual_price }}</p>
+            <p>Availability: {% if item.variant.new_status %} New {% else %} Not New {% endif %}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

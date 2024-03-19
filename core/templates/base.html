@@ -1,0 +1,92 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <link rel="icon" href="{% static 'images/favicon/7.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon/7.png' %}" type="image/x-icon">
+    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/color1.css' %}" media="screen" id="color">
+
+
+</head>
+
+<body>
+    {% include 'partials/navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+    
+    {% include 'partials/footer.html' %}
+
+        <!-- latest jquery-->
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+        <!-- menu js-->
+        <script src="{% static 'js/menu.js' %}"></script>
+    
+        <!-- lazyload js-->
+        <script src="{% static 'js/lazysizes.min.js' %}"></script>
+    
+        <!-- popper js-->
+        <script src="{% static 'js/popper.min.js' %}"></script>
+    
+        <!-- slick js-->
+        <script src="{% static 'js/slick.js' %}"></script>
+    
+        <!-- Bootstrap js-->
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+    
+        <!-- Bootstrap Notification js-->
+        <script src="{% static 'js/bootstrap-notify.min.js' %}"></script>
+    
+        <!-- Theme js-->
+        <script src="{% static 'js/script.js' %}"></script>
+
+        <script src="{% static 'js/subs.js' %}"></script>
+    
+        <script>
+            function openSearch() {
+                document.getElementById("search-overlay").style.display = "block";
+            }
+    
+            function closeSearch() {
+                document.getElementById("search-overlay").style.display = "none";
+            }
+        </script>
+
+
+        {% block js %}
+        {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,456 @@
+    {% load static %}
+    {% load custom_tags %}
+    {% load i18n %}
+    {% Nav as categories %}
+    <!-- loader start -->
+<!-- 
+    <script type="text/javascript">
+        var user ='{{request.user}}'
+        function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+
+    </script> -->
+
+    <div class="loader_skeleton">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>{% trans "Welcome to Our store Multikart" %}</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>{% trans "Call Us" %}: 123 - 456 - 7890</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <ul class="header-dropdown">
+                            {% if user.is_authenticated %}
+                                <li class="mobile-wishlist"><a href="{% url 'account:wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                                    {{ user.get_full_name|title }}
+                                    <ul class="onhover-show-div">
+                                        <li><a href="{% url 'account:profile' %}" data-lng="en">{% trans "View Profile" %}</a></li>
+                                        <li><a href="{% url 'account:logout' %}" data-lng="es">{% trans "Logout" %}</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="mobile-wishlist"><a href="{% url 'account:wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                                    {% trans "My Account" %}
+                                    <ul class="onhover-show-div">
+                                        <li><a href="{% url 'account:login' %}" data-lng="en">{% trans "Login" %}</a></li>
+                                        <li><a href="{% url 'account:register' %}" data-lng="es">{% trans "Register" %}</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            <div class="menu-left">
+                                <div class="navbar">
+                                    <a href="javascript:void(0)">
+                                        <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="brand-logo">
+                                    <a href="{% url 'core:home' %}"><img src="{% static 'images/icon/logo.png' %}"
+                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="menu-right pull-right">
+                                <div>
+                                    <nav>
+                                        <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                      
+                                    </nav>
+                                </div>
+                                <div>
+                                    <div class="icon-nav d-none d-sm-block">
+                                        <ul>
+                                            <li class="onhover-div mobile-search">
+                                                <div><img src="{% static 'images/icon/search.png' %}" onclick="openSearch()"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i class="ti-search"
+                                                        onclick="openSearch()"></i></div>
+                                            </li>
+                                            <li class="onhover-div mobile-setting">
+                                                <div><img src="{% static 'images/icon/setting.png' %}"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i
+                                                        class="ti-settings"></i></div>
+                                            </li>
+                                            <li class="onhover-div mobile-cart">
+                                                <div><img src="{% static 'images/icon/cart.png' %}"
+                                                        class="img-fluid blur-up lazyload" alt=""> <i
+                                                        class="ti-shopping-cart"></i></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="home-slider">
+            <div class="home"></div>
+        </div>
+        <section class="collection-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ldr-bg">
+                            <div class="contain-banner">
+                                <div>
+                                    <h4></h4>
+                                    <h2></h2>
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container section-b-space">
+            <div class="row section-t-space">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="product-para">
+                        <p class="first"></p>
+                        <p class="second"></p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="no-slider row">
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h5 class="second"></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- loader end -->
+
+
+    <!-- header start -->
+    <header>
+        <div class="mobile-fix-option"></div>
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>{% trans "Welcome to Our store Multikart" %}</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>{% trans "Call Us" %}: 123 - 456 - 7890</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <ul class="header-dropdown">
+                            {% if user.is_authenticated %}
+                                <li class="mobile-wishlist"><a href="{% url 'account:wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                                    {{ user.get_full_name|title }}
+                                    <ul class="onhover-show-div">
+                                        <li><a href="{% url 'account:profile' %}" data-lng="en">{% trans "View Profile" %}</a></li>
+                                        <li><a href="{% url 'account:logout' %}" data-lng="es">{% trans "Logout" %}</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="mobile-wishlist"><a href="{% url 'account:wishlist' %}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                                    {% trans "My Account" %}
+                                    <ul class="onhover-show-div">
+                                        <li><a href="{% url 'account:login' %}" data-lng="en">{% trans "Login" %}</a></li>
+                                        <li><a href="{% url 'account:register' %}" data-lng="es">{% trans "Register" %}</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                    <nav>
+                                        <div onclick="closeNav()">
+                                            <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2"
+                                                    aria-hidden="true"></i> Back</div>
+                                        </div>
+
+                                        {% load mptt_tags %}
+                                        <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+                                            {% recursetree categories %}
+                                                <li>
+                                                    <a href="/product/categories/?category={{node.slug}}">{{ node.title }}</a>
+                                                    {% if not node.is_leaf_node %}
+                                                        <ul class="children">
+                                                            {{ children }}
+                                                        </ul>
+                                                    {% endif %}
+                                                </li>
+                                            {% endrecursetree %}
+                                        </ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="brand-logo">
+                                <a href="{% url 'core:home' %}"><img src="{% static 'images/icon/logo.png' %}"
+                                        class="img-fluid blur-up lazyload" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="menu-right pull-right">
+                            <div>
+                                <nav id="main-nav">
+                                    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                    {% load mptt_tags %}
+                                    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                        {% recursetree categories %}
+                                        <li>
+                                            <a href="/product/categories/?category={{node.slug}}">{{ node.title }}</a>
+                                            {% if not node.is_leaf_node %}
+                                            <ul class="children">
+                                                {{ children }}
+                                            </ul>
+                                            {% endif %}
+                                        </li>
+                                        {% endrecursetree %}
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div>
+                                <div class="icon-nav">
+                                    <ul>
+                                        <li class="onhover-div mobile-search">
+                                            <div><img src="{% static 'images/icon/search.png' %}" onclick="openSearch()"
+                                                    class="img-fluid blur-up lazyload" alt=""> <i class="ti-search"
+                                                    onclick="openSearch()"></i></div>
+                                            <div id="search-overlay" class="search-overlay">
+                                                <div> <span class="closebtn" onclick="closeSearch()"
+                                                        title="Close Overlay">×</span>
+                                                    <div class="overlay-content">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <form class="form-header" method="GET" action="/search/">
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="search" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                                                                placeholder="Search Products......">
+                                                                            <div class="input-group-append">
+                                                                                <button class="btn btn-solid"><i class="fa fa-search"></i>Search</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="onhover-div mobile-setting">
+                                            <div>
+                                                <img src="{% static 'images/icon/setting.png' %}"
+                                                    class="img-fluid blur-up lazyload" alt=""> <i
+                                                    class="ti-settings"></i>
+                                            </div>
+                                            <div class="show-div setting">
+                                                <h6>{% trans 'language' %}</h6>
+                                                <ul>
+                                                    {% get_current_language as LANGUAGE_CODE %}
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        <li><a href="{{request.path}}">{% trans 'english' %}</a></li>
+                                                        <li><a href="/az{{request.path}}">{% trans 'azerbaijan' %}</a></li>
+                                                    {% else %}
+                                                        <li><a href="{{request.path|slice:'3:'}}">{% trans 'english' %}</a></li>
+                                                        <li><a href="{{request.path}}">{% trans 'azerbaijan' %}</a></li>
+                                                    {% endif %}
+
+                                                </ul>
+                                                
+                                            </div>
+                                        </li>
+                                        <li class="onhover-div mobile-cart">
+                                            <div>
+                                                <a href="{% url 'payment:cart' %}"><img src="{% static 'images/icon/cart.png' %}"
+                                                    class="img-fluid blur-up lazyload" alt=""> <i
+                                                    class="ti-shopping-cart"></i></a>
+                                            </div>
+                                            <!-- <ul class="show-div shopping-cart">
+                                                <li>
+                                                    <div class="media">
+                                                        <a href="#"><img alt="" class="mr-3"
+                                                                src="{% static 'images/fashion/product/1.jpg' %}"></a>
+                                                        <div class="media-body">
+                                                            <a href="#">
+                                                                <h4>item name</h4>
+                                                            </a>
+                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
+                                                                aria-hidden="true"></i></a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="media">
+                                                        <a href="#"><img alt="" class="mr-3"
+                                                                src="{% static 'images/fashion/product/2.jpg' %}"></a>
+                                                        <div class="media-body">
+                                                            <a href="#">
+                                                                <h4>item name</h4>
+                                                            </a>
+                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
+                                                                aria-hidden="true"></i></a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="total">
+                                                        <h5>subtotal : <span>$299.00</span></h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="buttons"><a href="cart.html" class="view-cart">view
+                                                            cart</a> <a href="#" class="checkout">checkout</a></div>
+                                                </li>
+                                            </ul> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="display:flex; justify-content: center; height: 30px; background-color: rgb(25, 158, 23); color: white; font-weight: bold; font-size: 15px; align-items: center;" >{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
