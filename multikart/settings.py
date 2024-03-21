@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-)*8bt!iso2-3+jw(izdi3-t85bj8my_zxu20(w!sj5xx&xvfk4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get('DEBUG') else True
+# DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -123,7 +124,7 @@ import time
 # print("***********************", os.environ.get('POSTGRES_HOST'))
 # print("***********************", os.environ.get('POSTGRES_PORT'))
 
-time.sleep(15)
+# time.sleep(15)
 
 DATABASES = {
     'default': {
@@ -184,9 +185,7 @@ LANGUAGES = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/' # app'da
-
-# STATIC_ROOT = os.path.join(BASE_DIR, '/static') #ram deqiq bilmirem nedir
+STATIC_URL = '/static/'
 
 if DEBUG:
     STATICFILES_DIRS = [
@@ -195,22 +194,15 @@ if DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# MEDIA DEBUG (Production and Development)
-if DEBUG:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# MEDIA DEBUG (Production and Development)
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-# Production
-if not DEBUG:
-    MEDIA_URL = 'http://localhost:80/media/'
+# MEDIA DEBUG (Production and Development)
+# if DEBUG:
+#     MEDIA_URL = '/media/'
+# else:
+#     MEDIA_URL = 'http://localhost:80/media/' # Hostingde localhost yox IP adres qoyulacaq
 
-# MEDIA_URL='media/'
-# MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
@@ -234,16 +226,12 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '27435170404-8n2ubtq27beu3e731u3bsd6t9jocdcnv.ap
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
 EMAIL_HOST = "smtp.gmail.com"
-
 EMAIL_USE_TLS = True
-
+EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-
 EMAIL_HOST_USER = "rustemzade.tunay.2000@gmail.com"
-
-EMAIL_HOST_PASSWORD = "ejuv xzso zpaq optd"
+EMAIL_HOST_PASSWORD = "smqf ygbf yyfd whjp"
 
 
 REST_FRAMEWORK = {
@@ -303,3 +291,34 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Baku'
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': '../django.log',
+#             'formatter': 'verbose',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+#     'formatters': {
+#         'verbose': {
+#             'format': '%(asctime)s - %(levelname)s - %(message)s',
+#         },
+#     },
+# }
+
+
+# import logging
+# from logging.config import dictConfig
+
+# dictConfig(LOGGING)

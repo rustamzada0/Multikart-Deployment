@@ -60,4 +60,5 @@ urlpatterns += i18n_patterns(
 handler404 = 'core.views.error'
 
 
-# urlpatterns += static(settings.STATIC_URL,documnet_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL,documnet_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

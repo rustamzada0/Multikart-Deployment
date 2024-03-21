@@ -1,6 +1,7 @@
 window.addEventListener('load', async function() {
     let cartID = document.getElementById("cartID").value
     let productID = document.getElementById("productID").value
+    // serverde --- http://20.215.225.225/api/product/${productID}
     let data = await fetch(`http://127.0.0.1:8000/api/product/${productID}`, {
         method: "GET",
         headers: {

@@ -88,10 +88,13 @@ def sign_up(request):
                 user = form.save(commit=False)
                 user.set_password(form.cleaned_data['password'])
                 user.is_active = False
+                print(user)
+                print("salam")
                 user.save()
 
                 cart = Cart.objects.create(user=user)
                 send_confirmation_mail(user=user, current_site=get_current_site(request))
+                print("aleykum")
                 # current_site = get_current_site(request)
                 # send_activate_link(user,current_site.domain,urlsafe_base64_encode(force_bytes(user.pk)), account_activation_token.make_token(user),)
                 messages.add_message(request, messages.SUCCESS, f"Activation mail sended!")                
