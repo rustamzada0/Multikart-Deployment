@@ -1,0 +1,46 @@
+name: production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/${{ github.event.repository.name }} &&
+            git pull &&
+            docker-compose up -d --build
+
+  prune:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker system prune -f
+            
+  TelegramNotification:
+      needs: [prune]
+      name: Telegram Notification
+      runs-on: ubuntu-latest
+      steps:
+        - uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              Development backend deployed.
+              Commit mesage: "${{ github.event.head_commit.message }}".
+              Check: http://20.215.225.225
