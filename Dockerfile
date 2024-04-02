@@ -22,3 +22,7 @@ COPY . .
 
 
 # web-deki 9000 deki portu gelib qoshur runserverin 8000 portuna
+
+# pg_dump -U root -d multikart > exported_data.sql ( database daki butun datalari (migrate olunmus modeller ve icindeki datalar hamisin "exported_data.sql") -e kocurme
+# docker cp ./exported_data <container_id>:exported.sql ( conatinerin icine sql-i gonderirik )
+# psql -U root -d multikart < exported.sql (butun modelleri ve datalari hamisin cekirik, NOT: migrate olunmadan (ozu yaradir modelleri cunki)
