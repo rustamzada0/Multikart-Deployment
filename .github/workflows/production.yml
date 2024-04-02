@@ -33,16 +33,16 @@ jobs:
           script: |
             docker system prune -f
             
-  TelegramNotification:
-      needs: [prune]
-      name: Telegram Notification
-      runs-on: ubuntu-latest
-      steps:
-        - uses: appleboy/telegram-action@master
-          with:
-            to: ${{ secrets.TELEGRAM_TO }}
-            token: ${{ secrets.TELEGRAM_TOKEN }}
-            message: |
-              Development backend deployed.
-              Commit mesage: "${{ github.event.head_commit.message }}".
-              Check: http://20.215.225.225
+  # TelegramNotification:
+  #     needs: [prune]
+  #     name: Telegram Notification
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: appleboy/telegram-action@master
+  #         with:
+  #           to: ${{ secrets.TELEGRAM_TO }}
+  #           token: ${{ secrets.TELEGRAM_TOKEN }}
+  #           message: |
+  #             Development backend deployed.
+  #             Commit mesage: "${{ github.event.head_commit.message }}".
+  #             Check: http://20.215.225.225
