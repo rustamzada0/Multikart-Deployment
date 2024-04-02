@@ -10,7 +10,7 @@ const categoryFunction = async function () {
     const itemsContainer = document.getElementById("itemsContainer");
 
     if (categoryValue || colorValue || brandValue || priceMinValue || priceMaxValue || size) {
-        let url = `http://127.0.0.1:8000/api/filter/?`;
+        let url = `http://20.215.225.225/api/filter/?`;
 
         if (categoryValue) {
             url += `category=${categoryValue}`;
@@ -111,7 +111,7 @@ const categoryFunction = async function () {
 
     }
     else {
-        let url = `http://127.0.0.1:8000/api/filter/`;
+        let url = `http://20.215.225.225/api/filter/`;
 
         let data = await fetch(url, {
             method: "GET",
@@ -298,7 +298,7 @@ function addItemToWishlist() {
         element.addEventListener("click", async function () {
             try {
                 let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
-                const data = await fetch(`http://127.0.0.1:8000/api/add-to-wishlist/?user_id=${userID}&variant_id=${this.getAttribute('value')}`, {
+                const data = await fetch(`http://20.215.225.225/api/add-to-wishlist/?user_id=${userID}&variant_id=${this.getAttribute('value')}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
